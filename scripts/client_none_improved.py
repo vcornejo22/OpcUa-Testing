@@ -2,15 +2,14 @@ import asyncio
 import logging
 import os
 from datetime import datetime, timedelta, timezone
-from typing import Any, Dict, Optional
+from typing import Any, Optional, Dict
 
-from aiomqtt import TLSParameters
-from aiomqtt import Client as MQTTClient
+from aiomqtt import Client as MQTTClient, TLSParameters
 from aiomqtt.exceptions import MqttError, MqttReentrantError
 from asyncua.client import Client
 from dotenv import load_dotenv
-from influxdb_client.client.write.point import Point
 from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync
+from influxdb_client.client.write.point import Point
 
 # Configuracion basica de logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -32,6 +31,7 @@ INFLUXDB_CONFIG: Dict[str, str] = {
     "url": get_env_required("INFLUXDB_URL"),
     "bucket": get_env_required("INFLUXDB_BUCKET"),
 }
+print(INFLUXDB_CONFIG)
 
 # MQTT Configuracion
 MQTT_CONFIG: Dict[str, str | int] = {

@@ -1,4 +1,5 @@
 import asyncio
+
 from asyncua import Client, ua
 
 UA_URL="opc.tcp://Victors-MacBook-Pro.local:53530/OPCUA/SimulationServer"

@@ -27,6 +27,7 @@ certs/
 *.pem
 *.pfx
 *.p12
+*.der
 
 # Infrastructure data (local state)
 infra/**/data/
@@ -41,3 +42,6 @@ experiments/**/.venv/
 
 # Third 
 third_party/opcua-exploit-framework/
+
+# Files
+*.csv

@@ -1,10 +1,12 @@
 import asyncio
 import logging
-import random
 import math
+import random
+from datetime import datetime
+
 from asyncua import Server, ua
 from asyncua.common.methods import uamethod
-from datetime import datetime
+
 
 class OPCUANode:
     def __init__(self, name, initial_value, update_period, update_function, *args, **kwargs):

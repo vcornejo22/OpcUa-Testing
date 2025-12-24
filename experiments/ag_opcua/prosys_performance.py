@@ -1,13 +1,14 @@
 import asyncio
-from asyncua import Client, ua
-from asyncua.crypto import security_policies
 import os
-from itertools import product
+import random
 from datetime import datetime
+from itertools import product
+
 import pandas as pd
 import psutil
+from asyncua import Client, ua
+from asyncua.crypto import security_policies
 from dotenv import load_dotenv
-import random
 
 load_dotenv()
 UA_URL = os.getenv("UA_URL")

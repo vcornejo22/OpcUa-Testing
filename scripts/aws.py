@@ -1,11 +1,10 @@
 import asyncio
-from awscrt import io, mqtt, http
-from awsiot import mqtt_connection_builder
-import asyncio
-from dotenv import load_dotenv
 import os
-from aiomqtt import TLSParameters
-from aiomqtt import Client as MQTTClient
+
+from aiomqtt import Client as MQTTClient, TLSParameters
+from awscrt import http, io, mqtt
+from awsiot import mqtt_connection_builder
+from dotenv import load_dotenv
 
 load_dotenv()
 # mosquitto_sub -h mqtt-02 -p 8883 --cafile ca-mqtt-02.crt --cert server-mqtt-02.crt --key server-mqtt-02.key --tls-version tlsv1.2 -t server -u soporte -P 5oporte.SHP2023 -d

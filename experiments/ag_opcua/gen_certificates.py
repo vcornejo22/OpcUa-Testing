@@ -1,5 +1,5 @@
-import subprocess
 import os
+import subprocess
 from itertools import product
 
 # Step 2: openssl genrsa -out key.pem 2048

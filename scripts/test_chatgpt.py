@@ -1,6 +1,8 @@
 import asyncio
+
 from asyncua import Client, ua
 from asyncua.common.subscription import Subscription
+
 
 class OPCUAClient:
     def __init__(self, url):

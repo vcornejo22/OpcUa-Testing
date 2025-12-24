@@ -2,6 +2,7 @@ from scapy.all import *
 from scapy.layers.inet import IP, TCP
 from scapy.layers.l2 import Ether
 
+
 def capturar_paquete(packet):
     # Procesar capa Ethernet
     if packet.haslayer(Ether):

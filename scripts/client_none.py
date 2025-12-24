@@ -1,10 +1,11 @@
 import asyncio
-from asyncua import Client
-from dotenv import load_dotenv
+import contextlib
+import logging
 import os
 from datetime import datetime, timedelta, timezone
-import logging 
-import contextlib
+
+from asyncua import Client
+from dotenv import load_dotenv
 
 # Configuración básica de logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

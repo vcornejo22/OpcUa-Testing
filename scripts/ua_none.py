@@ -1,14 +1,23 @@
 import asyncio
-from asyncua import Client
-from dotenv import load_dotenv
 import os
+from typing import Union
+
+from asyncua import Client
+from asyncua import Node
+from asyncua.ua.uaprotocol_auto import DataChangeNotification
+from dotenv import load_dotenv
+
+def require_env(value: str | None, name: str) -> str:
+    if value is None:
+        raise ValueError(f"Environment variable {name} is required but not set.")
+    return value
 
 load_dotenv(override=True)
 # OPC UA Configuración
-# UA_URL=os.getenv("UA_URL")
-# UA_URI=os.getenv("UA_URI")
-UA_URL='opc.tcp://mac:53530/OPCUA/SimulationServer'
-UA_URI='urn:mac:OPCUA:SimulationServer'
+UA_URL=require_env(os.getenv("UA_URL"), "UA_URL")
+UA_URI=require_env(os.getenv("UA_URI"), "UA_URI")
+# UA_URL='opc.tcp://mac:53530/OPCUA/SimulationServer'
+# UA_URI='urn:mac:OPCUA:SimulationServer'
 UA_USER='user'
 UA_PASSWORD='user'
 
@@ -23,18 +32,19 @@ nodes_dict = {
     "Triangle": "ns=3;i=1007",
 }
 
+
 # Función auxiliar para obtene clave por valor
-def get_key_by_value(search_value):
+def get_key_by_value(search_value: str):
     return next((key for key, value in nodes_dict.items() if value == search_value), None)
 
 # Clase manejadora de suscripción OPC UA
 class SubHandler:
 
-    async def datachange_notification(self, node, val, data):
+    async def datachange_notification(self, node: Node, val: Union[int, float], data: DataChangeNotification):
         key = get_key_by_value(str(node))
         print(f"Python: key: {key} - Nodo: {node} - val: {val}")
 
-    def event_notification(self, event):
+    def event_notification(self, event: str):
         print("Python: New event", event)
 
 # Función principal
@@ -47,12 +57,12 @@ async def main():
     try: 
         await ua_client.connect()
         print(f"Conectado al servidor OPC UA: {UA_URL}")
-        print("Nodos root hijos son: %s", await ua_client.nodes.root.get_children())
         
         # Crear lista de nodos a suscribirse
         var_list = [ua_client.get_node(node_id) for node_id in nodes_dict.values()]
         handler = SubHandler()
         sub = await ua_client.create_subscription(1000, handler)
+        # sub: Subscription = cast(Subscription, await ua_client.create_subscription(1000, handler))
         await sub.subscribe_data_change(var_list)
 
         while True:

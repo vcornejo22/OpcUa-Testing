@@ -1,14 +1,13 @@
-import psutil
-import time
 import asyncio
-from dotenv import load_dotenv
-from influxdb_client import Point
-from influxdb_client.rest import ApiException
-from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync
-from influxdb_client import InfluxDBClient
-from influxdb_client import PostBucketRequest, SchemaType
 import os
 import socket
+import time
+
+import psutil
+from dotenv import load_dotenv
+from influxdb_client import InfluxDBClient, Point, PostBucketRequest, SchemaType
+from influxdb_client.client.influxdb_client_async import InfluxDBClientAsync
+from influxdb_client.rest import ApiException
 
 # Cargar variables de entorno
 load_dotenv()

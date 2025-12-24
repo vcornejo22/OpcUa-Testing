@@ -1,10 +1,11 @@
 import datetime
-from influxdb_client import InfluxDBClient, Point, Dialect
-from influxdb_client.client.write_api import SYNCHRONOUS
-from dotenv import load_dotenv
 import os
-import pandas as pd
+
 import numpy as np
+import pandas as pd
+from dotenv import load_dotenv
+from influxdb_client import Dialect, InfluxDBClient, Point
+from influxdb_client.client.write_api import SYNCHRONOUS
 
 # Cargar las variables de entorno
 load_dotenv()
