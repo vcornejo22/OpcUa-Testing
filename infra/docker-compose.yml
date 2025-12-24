@@ -1,0 +1,76 @@
+version: "3.5"
+services:
+  influxdb:
+    image: influxdb:latest
+    ports:
+      - "${DOCKER_INFLUXDB_INIT_PORT}:8086"
+    container_name: influxdb
+    # restart: always
+    env_file:
+      - .env
+    # entrypoint: [ "./entrypoint.sh" ]
+    volumes:
+      - ./infra/influxdb-data:/var/lib/influxdb:rw
+    networks:
+      - net_prosys
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana-server
+    # restart: always
+    # depends_on:
+    #   - influxdb
+    env_file:
+      - .env
+    # links:
+    #   - influxdb
+    ports:
+      - "${GRAFANA_PORT}:3000"
+    volumes:
+      - ./infra/grafana_data:/var/lib/grafana:rw
+    networks:
+      - net_prosys
+      
+  mosquitto:
+    image: eclipse-mosquitto
+    hostname: mqtt-broker
+    container_name: mqtt-broker
+    # restart: unless-stopped
+    ports:
+      - "${MQTT_PORT}:8883"
+    volumes:
+      - ./infra/mqtt/conf:/mosquitto/config/
+      - ./infra/mqtt/log:/mosquitto/log/
+      - ./infra/mqtt/data:/mosquitto/data/
+    networks:
+      - net_prosys
+
+  telegraf:
+    image: arm64v8/telegraf:1.32.1-alpine
+    depends_on:
+      - influxdb
+    volumes:
+    # Mount for telegraf config
+      # - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro 
+      - ./infra/telegraf/telegraf.conf:/etc/telegraf/telegraf.d/telegraf.conf:ro 
+    networks:
+      - net_prosys
+
+
+  # mosquitto-bridge:
+  #   image: eclipse-mosquitto
+  #   hostname: mqtt-broker-bridge
+  #   container_name: mqtt-bridge
+  #   # restart: unless-stopped
+  #   volumes:
+  #     - ./infra/mqtt-bridge/conf:/mosquitto/config/
+  #     - ./infra/mqtt-bridge/log:/mosquitto/log/
+  #     - ./infra/mqtt-bridge/data:/mosquitto/data/
+  #   ports:
+  #     - "${MQTT_BRIDGE_PORT}:8883"
+
+networks:
+  net_prosys:
+    driver: bridge
+
+volumes: {}

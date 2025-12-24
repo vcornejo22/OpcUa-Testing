@@ -1,0 +1,164 @@
+// PublishResponse -> Message: Encodeable Object/PublishResponse/NotificationMessage/[0]: ExtensionObject/DataChangeNotification/MonitoredItems/[0]: MonitoredItemNotification/Value/Value/Double: 23
+{
+    "PublishResponse": {
+        "Message": {
+            "Encodeable Object": {
+                "PublishResponse": {
+                    "NotificationMessage": []
+                }
+            }
+        }
+    },
+    "Hello": {
+        "MessageType": "HEL",
+        "Version": "0",
+        "EndpointUrl": "opc.tcp://172.16.190.1:53530/OPCUA/SimulationServer"
+    },
+    "Acknowledge": {
+        "MessageType": "ACK",
+        "Version": "0",
+        "MaxMessageSize": 4194240
+    },
+    "OpenSecureChannelRequest": {
+        "MessageType": "OPN",
+        "SecureChannelID": "0",
+        "SecurityPolicyUri": "http://opcfoundation.org/UA/SecurityPolicy#None",
+        "SenserCertificate": "<MISSING>[OpcUa Null ByteString]",
+        "ReceiverCertificate": "<MISSING>[OpcUa Null ByteString]",
+        "Message": {
+            "NodeIdNamespaceIndex": "0",
+            "NodeIdIdentifierNumeric": "OpenSecureChannelRequest (446)",
+            "OpenSecureChanelRequest": {
+                "RequestHeader": {
+                    "Timestamp": "0"
+                },
+                "ClientProtocolVersion": 0,
+                "SecurityTokenRequestType": "Issue 0x00000000",
+                "MessageSecurityMode": "None (0x000000001)",
+                "RequestedLifetime": 3600000
+            }
+        }
+    },
+    "OpenSecureChannelResponse": {
+        "MessageType": "OPN",
+        "SecureChannelID": "12",
+        "SecurityPolicyUri": "http://opcfoundation.org/UA/SecurityPolicy#None",
+        "SenserCertificate": "<MISSING>[OpcUa Null ByteString]",
+        "ReceiverCertificate": "<MISSING>[OpcUa Null ByteString]",
+        "Message": {
+            "NodeIdNamespaceIndex": "0",
+            "NodeIdIdentifierNumeric": "OpenSecureChannelResponse (449)",
+            "OpenSecureChanelResponse": {
+                "ResponseHeader": {
+                    "Timestamp": "0",
+                    "ServiceResult": "0x00000000 [Good]"
+                },
+                "ServerProtocolVersion": 0,
+                "SecurityToken": {
+                    "ChannelId": 12,
+                    "TokenId": 1,
+                    "RevisedLifetime": 3600000
+                }
+                
+            }
+        }
+    },
+    "CreateSessionRequest": {
+        "MessageType": "MSG",
+        "SecureChannelID": 12,
+        "SecurityTokenId": 1,
+        "Message": {
+            "TypeId": {
+                "NodeIdNamespaceIndex": 0,
+                "NodeIdIdentifierNumeric": "CreateSessionRequest (461)"
+            },
+            "CreateSessionRequest": {
+                "RequestHeader": {
+                    "AuthenticationToken": {
+                        "IdentifierNumeric": 0
+                    },
+                    "Timestamp": "Sep 21, 2024 09:26:56.935361000 -05"
+                },
+                "ClientDescription":{
+                    "ApplicationUri": "urn:Victors-MacBook-Pro.local:OPCUA:SimulationServer",
+                    "ProductUri": "urn:freeopcua.github.io:client",
+                    "ApplicationName": {
+                        "Text": "Pure Python Async. Client"
+                    },
+                    "ApplicationType": "Client 0x00000001",
+                    "GatewayServerUri": "[OpcUa Null String]",
+                    "DiscoveryProfileUri": "[OpcUa Null String]",
+                    "DiscoveryUrls": {
+                        "ArraySize": 0
+                    }
+                },
+                "ServerUri": "[OpcUa Null String]",
+                "EndPointUrl": "opc.tcp://172.16.190.1:53530/OPCUA/SimulationServer",
+                "SessionName": "Pure Python Async. Client Session1",
+                "ClientNonce": "14178ede39998bbeb414464552717052d7390a21dbb5feabc6134d496403ba35",
+                "ClientCertificate": "<MISSING> [OpcUa Null String]",
+                "RequestedSessionTimeout": 3600000
+            }
+        }
+
+    },
+    "CreateSessionResponse": {
+        "MessageType": "MSG",
+        "SecureChannelID": 12,
+        "SecurityTokenId": 1,
+        "Message": {
+            "TypeId": {
+                "NodeIdNamespaceIndex": 0,
+                "NodeIdIdentifierNumeric": "CreateSessionResponse (464)"
+            },
+            "CreateSessionResponse": {
+                "ResponseHeader": {},
+                "SessionId": {},
+                "AuthenticationToken": {},
+                "RevisedSessionToken": 3600000,
+                "ServerNonce": "82a35c1e28ce618f38cd290b133ada7e249f321df1a5342eff196912d759992b",
+                "ServerCertificate": {},
+                "ServerEndpoints": {
+                    "ArraySize": 11,
+                    "[0]": {
+                        "EndPointUrl": "opc.tcp://Victors-MacBook-Pro.local:53530/OPCUA/SimulationServer",
+                        "Server": {
+                            "ApplicationUri": "urn:Victors-MacBook-Pro.local:OPCUA:SimulationServer",
+                            "ProductUri": "urn:prosysopc.com:OPCUA:SimulationServer",
+                            "ApplicationName": {
+                                "Locale": "[OpcUa Null String]",
+                                "Text": "SimulationServer@Victors-MacBook-Pro"
+                            },
+                            "ApplicationType": "Server 0x00000000",
+                            "GatewayServerUri": "[OpcUa Null String]",
+                            "DiscoveryProfileUri":"[OpcUa Null String]",
+                            "DiscoveryUrls": {
+                                "ArraySize": 1,
+                                "[0]": "opc.tcp://Victors-MacBook-Pro.local:53530/OPCUA/SimulationServer"
+                            }
+                        },
+                        "ServerCertificate": {
+                            "signedCertificate": {},
+                            "algorithmIdentifier": {},
+                            "Padding": 0,
+                            "encrypted": "572f6faff2fe2d2946b5cb8f2a62bedb3e30e815ce7b470eb82138f31dce780aef91a2ed7144c9b275d56edf16e44d5acc10c9814e78a675b043fcf5c1b935260a7ec046eef64bad3073dc50c354095f3739e3ea76fb01c90a4d677d6be9c88238797e41ea64b02435bf7e3b3c0e75665255c3a307d3f1d330bedc5f0d02ea061ca68e98a95cffbc57c19e6392704d1f7976606bdadce1673186c7d3bc82ef3f127e93b91c8f8c149ef8f77afefde84c5d1c12856a52b85a706f76909f466d36f434958135e623c434fb1157ffcc2e673bb889e69a5f0de9533f151c363e7ff56489977aa85fb6e7008155fa82b0b808ba951f8aa2311058e62e5447870c0a04"
+                        },
+                        "MessageSecurityMode":"Sign (0x000000002)",
+                        "SecurityPolicyUri": "http://opcfoundation.org/UA/SecurityPolicy#Aes256_Sha256_RsaPss",
+                        "TransportProfileUri": "http://opcfoundation.org/UA-Profile/Transport/uatcp-uasc-uabinary",
+                        "SecurityLevel": 1
+                    }
+                },
+                "ServerSoftwareCertificates": {
+                    "ArraySize": 0
+                },
+                "ServerSignature": {
+                    "Algorithm": "[OpcUa Null String]",
+                    "Signature": "<MISSING> OpcUa Null String"
+                }
+            }
+        }
+    }
+}
+
+

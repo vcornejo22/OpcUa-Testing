@@ -1,0 +1,40 @@
+.DS_Store
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# Data and runtime artifacts
+*.db
+*.sqlite
+*.log
+
+# Certificates and secrets
+certs/
+*.key
+*.pem
+*.pfx
+*.p12
+
+# Infrastructure data (local state)
+infra/**/data/
+infra/**/log/
+infra/grafana_data/
+infra/influxdb-data/
+infra/docker/
+
+# Experiments virtualenvs or local artifacts
+experiments/**/venv/
+experiments/**/.venv/

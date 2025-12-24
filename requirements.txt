@@ -1,0 +1,6 @@
+python-dotenv
+influxdb-client
+asyncua==1.0.4
+aiohttp
+aiomqtt
+# git+https://github.com/sbtinstruments/cyto.git
