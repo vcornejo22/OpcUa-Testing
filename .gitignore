@@ -38,3 +38,6 @@ infra/docker/
 # Experiments virtualenvs or local artifacts
 experiments/**/venv/
 experiments/**/.venv/
+
+# Third 
+third_party/opcua-exploit-framework/
